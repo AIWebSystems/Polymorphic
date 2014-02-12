@@ -1,6 +1,6 @@
 <?php namespace Pyro\FieldType;
 
-use Pyro\Module\Streams_core\AbstractFieldType;
+use Pyro\Module\Streams\FieldType\FieldTypeAbstract;
 
 /**
  * PyroStreams Relationship Field Type
@@ -10,7 +10,7 @@ use Pyro\Module\Streams_core\AbstractFieldType;
  * @license     http://www.aiwebsystems.com/
  * @link        http://www.aiwebsystems.com/
  */
-class Polymorphic extends AbstractFieldType
+class Polymorphic extends FieldTypeAbstract
 {
     /**
      * Field type slug

@@ -144,7 +144,7 @@ class Polymorphic extends FieldTypeAbstract
         $tableName = $this->getStream()->stream_prefix.$this->getStream()->stream_slug;
 
         $schema->table($tableName, function($table) {
-            $table->integer($this->field->field_slug.'_id')->nullable();
+            $table->string($this->field->field_slug.'_id')->nullable();
             $table->string($this->field->field_slug.'_type')->nullable();
         });
     }

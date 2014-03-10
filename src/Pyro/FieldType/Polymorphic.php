@@ -14,12 +14,14 @@ class Polymorphic extends FieldTypeAbstract
 {
     /**
      * Field type slug
+     *
      * @var string
      */
     public $field_type_slug = 'polymorphic';
 
     /**
      * DB column type
+     *
      * @var string
      */
     public $db_col_type = false;
@@ -27,35 +29,39 @@ class Polymorphic extends FieldTypeAbstract
     /**
      * Alternative processing
      * Because we use _id and _type columns
+     *
      * @var boolean
      */
     public $alt_process = true;
 
     /**
      * Custom parameters
+     *
      * @var array
      */
-    public $custom_parameters = array(
-        //'stream',
-        );
+    public $custom_parameters = array(//'stream',
+    );
 
     /**
      * Version
+     *
      * @var string
      */
     public $version = '1.0';
 
     /**
      * Author
+     *
      * @var  array
      */
     public $author = array(
         'name' => 'Ryan Thompson - AI Web Systems, Inc.',
-        'url' => 'http://www.aiwebsystems.com/'
-        );
+        'url'  => 'http://www.aiwebsystems.com/'
+    );
 
     /**
      * Relation
+     *
      * @return object The relation object
      */
     public function relation()
@@ -76,7 +82,8 @@ class Polymorphic extends FieldTypeAbstract
 
     /**
      * Output the form input for frontend use
-     * @return string 
+     *
+     * @return string
      */
     public function publicFormInput()
     {
@@ -96,6 +103,7 @@ class Polymorphic extends FieldTypeAbstract
 
     /**
      * Pre Ouput
+     *
      * @return  mixed   null or string
      */
     public function stringOutput()
@@ -110,6 +118,7 @@ class Polymorphic extends FieldTypeAbstract
 
     /**
      * Pre Ouput Plugin
+     *
      * @return array
      */
     public function pluginOutput()
@@ -123,6 +132,7 @@ class Polymorphic extends FieldTypeAbstract
 
     /**
      * Pre Ouput Data
+     *
      * @return RelationClassModel
      */
     public function dataOutput()
@@ -136,16 +146,20 @@ class Polymorphic extends FieldTypeAbstract
 
     /**
      * Overide the column name like field_slug_id
-     * @param  Illuminate\Database\Schema   $schema
+     *
+     * @param  Illuminate\Database\Schema $schema
      * @return void
      */
     public function fieldAssignmentConstruct($schema)
     {
-        $tableName = $this->getStream()->stream_prefix.$this->getStream()->stream_slug;
+        $tableName = $this->getStream()->stream_prefix . $this->getStream()->stream_slug;
 
-        $schema->table($tableName, function($table) {
-            $table->string($this->field->field_slug.'_id')->nullable();
-            $table->string($this->field->field_slug.'_type')->nullable();
-        });
+        $schema->table(
+            $tableName,
+            function ($table) {
+                $table->string($this->field->field_slug . '_id')->nullable();
+                $table->string($this->field->field_slug . '_type')->nullable();
+            }
+        );
     }
 }
